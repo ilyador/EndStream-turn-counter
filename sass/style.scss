@@ -1,0 +1,71 @@
+$games-list-width: 300px;
+$epochs: 5;
+$epoch-height: 100vh/$epochs;
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+
+#board {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  li {
+    margin: 0;
+    padding: 0;
+  }
+
+  .player {
+    position: absolute;
+    height: 100%;
+    width: 50%;
+
+    &.opponent {
+      left: 50vw;
+
+      .turnpoints {
+        order: 1;
+      }
+    }
+
+    .epoch {
+      display: flex;
+    }
+
+    .turnpoints,
+    .agents {
+      height: $epoch-height;
+      border: dotted 1px gray;
+    }
+
+    .turnpoints {
+      flex: 0 $epoch-height;
+    }
+
+    .agents {
+      flex: 1;
+      
+      button {
+        font-size: 20px;
+      }
+    }
+  }
+}

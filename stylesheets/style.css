@@ -1,0 +1,70 @@
+/* line 5, ../sass/style.scss */
+html {
+  box-sizing: border-box;
+}
+
+/* line 9, ../sass/style.scss */
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* line 13, ../sass/style.scss */
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* line 18, ../sass/style.scss */
+#board {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+/* line 25, ../sass/style.scss */
+#board ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+/* line 31, ../sass/style.scss */
+#board li {
+  margin: 0;
+  padding: 0;
+}
+/* line 36, ../sass/style.scss */
+#board .player {
+  position: absolute;
+  height: 100%;
+  width: 50%;
+}
+/* line 41, ../sass/style.scss */
+#board .player.opponent {
+  left: 50vw;
+}
+/* line 44, ../sass/style.scss */
+#board .player.opponent .turnpoints {
+  order: 1;
+}
+/* line 49, ../sass/style.scss */
+#board .player .epoch {
+  display: flex;
+}
+/* line 53, ../sass/style.scss */
+#board .player .turnpoints,
+#board .player .agents {
+  height: 20vh;
+  border: dotted 1px gray;
+}
+/* line 59, ../sass/style.scss */
+#board .player .turnpoints {
+  flex: 0 20vh;
+}
+/* line 63, ../sass/style.scss */
+#board .player .agents {
+  flex: 1;
+}
+/* line 66, ../sass/style.scss */
+#board .player .agents button {
+  font-size: 20px;
+}
