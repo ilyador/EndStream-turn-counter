@@ -28,17 +28,16 @@ body {
     list-style-type: none;
   }
 
-  li {
-    margin: 0;
-    padding: 0;
-  }
-
   .player {
     position: absolute;
     height: 100%;
     width: 50%;
 
-    &.opponent {
+    &.player1 {
+
+    }
+
+    &.player2 {
       left: 50vw;
 
       .turnpoints {

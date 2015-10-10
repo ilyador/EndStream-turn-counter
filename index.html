@@ -11,13 +11,17 @@
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="stylesheets/style.css"/>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+  <script src="app.js"></script>
 </head>
 <body>
 
 
 
-<div id="board">
-  <ul class="player me">
+<div id="board" ng-app="esCounter" ng-controller="boardController">
+  <ul class="player player1">
 
     <li class="epoch">
       <div class="turnpoints"></div>
@@ -45,7 +49,8 @@
       <div class="agents"></div>
     </li>
   </ul>
-  <ul class="player opponent">
+
+  <ul class="player player2">
     <li class="epoch">
       <div class="turnpoints"></div>
       <div class="agents"></div>
@@ -71,6 +76,5 @@
 
 
 
-<script scr="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
 </body>
 </html>

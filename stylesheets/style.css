@@ -28,43 +28,38 @@ body {
   list-style-type: none;
 }
 /* line 31, ../sass/style.scss */
-#board li {
-  margin: 0;
-  padding: 0;
-}
-/* line 36, ../sass/style.scss */
 #board .player {
   position: absolute;
   height: 100%;
   width: 50%;
 }
-/* line 41, ../sass/style.scss */
-#board .player.opponent {
+/* line 40, ../sass/style.scss */
+#board .player.player2 {
   left: 50vw;
 }
-/* line 44, ../sass/style.scss */
-#board .player.opponent .turnpoints {
+/* line 43, ../sass/style.scss */
+#board .player.player2 .turnpoints {
   order: 1;
 }
-/* line 49, ../sass/style.scss */
+/* line 48, ../sass/style.scss */
 #board .player .epoch {
   display: flex;
 }
-/* line 53, ../sass/style.scss */
+/* line 52, ../sass/style.scss */
 #board .player .turnpoints,
 #board .player .agents {
   height: 20vh;
   border: dotted 1px gray;
 }
-/* line 59, ../sass/style.scss */
+/* line 58, ../sass/style.scss */
 #board .player .turnpoints {
   flex: 0 20vh;
 }
-/* line 63, ../sass/style.scss */
+/* line 62, ../sass/style.scss */
 #board .player .agents {
   flex: 1;
 }
-/* line 66, ../sass/style.scss */
+/* line 65, ../sass/style.scss */
 #board .player .agents button {
   font-size: 20px;
 }
