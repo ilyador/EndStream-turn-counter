@@ -21,55 +21,14 @@
 
 
 <div id="board" ng-app="esCounter" ng-controller="boardController">
-  <ul class="player player1">
-
-    <li class="epoch">
-      <div class="turnpoints"></div>
+  <ul class="player" ng-repeat="player in board" ng-class="player.name">
+    <li class="epoch" ng-repeat="turnpoint in player.stream">
+      <div class="turnpoints">{{turnpoint.turns}}</div>
       <div class="agents">
-        <button class="btn btn-primary">
+        <button class="btn btn-primary" ng-click="agentDisintegrating($index, player.name)">
           <i class="fa fa-user-plus"></i>
         </button>
       </div>
-    </li>
-
-    <li class="epoch">
-      <div class="turnpoints"></div>
-      <div class="agents"></div>
-    </li>
-    <li class="epoch">
-      <div class="turnpoints"></div>
-      <div class="agents"></div>
-    </li>
-    <li class="epoch">
-      <div class="turnpoints"></div>
-      <div class="agents"></div>
-    </li>
-    <li class="epoch">
-      <div class="turnpoints"></div>
-      <div class="agents"></div>
-    </li>
-  </ul>
-
-  <ul class="player player2">
-    <li class="epoch">
-      <div class="turnpoints"></div>
-      <div class="agents"></div>
-    </li>
-    <li class="epoch">
-      <div class="turnpoints"></div>
-      <div class="agents"></div>
-    </li>
-    <li class="epoch">
-      <div class="turnpoints"></div>
-      <div class="agents"></div>
-    </li>
-    <li class="epoch">
-      <div class="turnpoints"></div>
-      <div class="agents"></div>
-    </li>
-    <li class="epoch">
-      <div class="turnpoints"></div>
-      <div class="agents"></div>
     </li>
   </ul>
 </div>
