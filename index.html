@@ -21,11 +21,11 @@
 
 
 <div id="board" ng-app="esCounter" ng-controller="boardController">
-  <ul class="player" ng-repeat="player in board" ng-class="player.name">
-    <li class="epoch" ng-repeat="turnpoint in player.stream">
+  <ul class="player" ng-repeat="(player, stream) in board" ng-class="player">
+    <li class="epoch" ng-repeat="(epoch, turnpoint) in stream">
       <div class="turnpoints">{{turnpoint.turns}}</div>
       <div class="agents">
-        <button class="btn btn-primary" ng-click="agentDisintegrating($index, player.name)">
+        <button class="btn btn-primary" ng-click="agentDisintegrating(epoch, player)">
           <i class="fa fa-user-plus"></i>
         </button>
       </div>
