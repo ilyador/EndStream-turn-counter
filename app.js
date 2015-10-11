@@ -47,8 +47,6 @@ angular.module('esCounter', []).controller('boardController', function($scope) {
   };
 
   $scope.agentDisintegrating = function (epoch, player) {
-    if ($scope.currentPlayer !== player) return;
-
     var influencedTurnpoint = $scope.board[player].stream[epoch];
     influencedTurnpoint.counting = !influencedTurnpoint.counting;
   };
@@ -58,8 +56,10 @@ angular.module('esCounter', []).controller('boardController', function($scope) {
     var stream = $scope.board[player].stream;
 
     _.forOwn(stream, function(turnpoint, epoch) {
-      if(turnpoint.counting && turnpoint.turns > 0) {
+      if(turnpoint.counting && turnpoint.turns > 1) {
         turnpoint.turns -= 1;
+      } else if (turnpoint.turns === 1) {
+        turnpoint.turns = "Disintegrate or spin"
       } else {
         turnpoint.turns = streamStructure[epoch].turns;
       }

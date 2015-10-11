@@ -31,7 +31,7 @@
         </div>
         <div class="agents">
           <button class="btn btn-primary agent-placed"
-                  ng-class="{ 'disabled': player !== currentPlayer, 'btn-danger': turnpoint.counting }"
+                  ng-class="{ 'btn-danger': turnpoint.counting }"
                   ng-click="agentDisintegrating(epoch, player)">
             <i class="fa"
                ng-class="turnpoint.counting ? 'fa-user-times':'fa-user-plus'"></i>
