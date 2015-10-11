@@ -1,65 +1,114 @@
-/* line 5, ../sass/style.scss */
+/*
+   _ __ ___  ___  ___ _ __  ___
+  | '_ ` _ \| \ \/ / | '_ \/ __|
+  | | | | | | |>  <| | | | \__ \
+  |_| |_| |_|_/_/\_\_|_| |_|___/
+
+*/
+/*
+         _       _           _
+        | |     | |         | |
+    __ _| | ___ | |__   __ _| |
+   / _` | |/ _ \| '_ \ / _` | |
+  | (_| | | (_) | |_) | (_| | |
+   \__, |_|\___/|_.__/ \__,_|_|
+    __/ |
+   |___/
+*/
+/* line 26, ../sass/style.scss */
 html {
   box-sizing: border-box;
 }
 
-/* line 9, ../sass/style.scss */
+/* line 30, ../sass/style.scss */
 *, *:before, *:after {
   box-sizing: inherit;
 }
 
-/* line 13, ../sass/style.scss */
+/* line 34, ../sass/style.scss */
 body {
   font-family: 'Open Sans', sans-serif;
 }
 
-/* line 18, ../sass/style.scss */
+/*
+       _         _
+      | |       | |
+   ___| |_ _   _| | ___  ___
+  / __| __| | | | |/ _ \/ __|
+  \__ \ |_| |_| | |  __/\__ \
+  |___/\__|\__, |_|\___||___/
+            __/ |
+           |___/
+*/
+/* line 7, ../sass/_board.scss */
 #board {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100vw;
-  height: 100vh;
+  height: 80vh;
 }
-/* line 25, ../sass/style.scss */
-#board ul {
+/* line 11, ../sass/_board.scss */
+#board .player {
+  width: 50%;
+  position: absolute;
   margin: 0;
   padding: 0;
   list-style-type: none;
 }
-/* line 31, ../sass/style.scss */
-#board .player {
-  position: absolute;
-  height: 100%;
-  width: 50%;
-}
-/* line 40, ../sass/style.scss */
+/* line 22, ../sass/_board.scss */
 #board .player.player2 {
   left: 50vw;
 }
-/* line 43, ../sass/style.scss */
-#board .player.player2 .turnpoints {
+/* line 25, ../sass/_board.scss */
+#board .player.player2 .turnpoint {
   order: 1;
 }
-/* line 48, ../sass/style.scss */
+/* line 30, ../sass/_board.scss */
 #board .player .epoch {
   display: flex;
+  height: 16vh;
 }
-/* line 52, ../sass/style.scss */
-#board .player .turnpoints,
+/* line 35, ../sass/_board.scss */
+#board .player .turnpoint,
 #board .player .agents {
-  height: 20vh;
-  border: dotted 1px gray;
+  height: 100%;
 }
-/* line 58, ../sass/style.scss */
-#board .player .turnpoints {
-  flex: 0 20vh;
+/* line 40, ../sass/_board.scss */
+#board .player .agents {
+  text-align: center;
 }
-/* line 62, ../sass/style.scss */
+/* line 44, ../sass/_board.scss */
+#board .player .agent-placed {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%) translateZ(0);
+}
+/* line 48, ../sass/_board.scss */
+#board .player .turnpoint {
+  flex: 0 16vh;
+  background-color: red;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  border: 20px solid #fff;
+  border-radius: 50%;
+}
+/* line 58, ../sass/_board.scss */
+#board .player .counter {
+  text-align: center;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%) translateZ(0);
+}
+/* line 63, ../sass/_board.scss */
 #board .player .agents {
   flex: 1;
 }
-/* line 65, ../sass/style.scss */
+/* line 66, ../sass/_board.scss */
 #board .player .agents button {
   font-size: 20px;
+}
+
+/* line 73, ../sass/_board.scss */
+#controls {
+  width: 100vw;
+  height: 20vh;
 }

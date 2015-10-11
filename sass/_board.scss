@@ -1,0 +1,76 @@
+$games-list-width: 300px;
+$epochs: 5;
+$board-height: 80vh;
+$epoch-height: $board-height/$epochs;
+$controls-height: (100vh - $board-height);
+
+#board {
+  width: 100vw;
+  height: $board-height;
+
+  .player {
+    width: 50%;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+
+    &.player1 {
+
+    }
+
+    &.player2 {
+      left: 50vw;
+
+      .turnpoint {
+        order: 1;
+      }
+    }
+
+    .epoch {
+      display: flex;
+      height: $epoch-height;
+    }
+
+    .turnpoint,
+    .agents {
+      height: 100%;
+    }
+
+    .agents {
+      text-align: center;
+    }
+
+    .agent-placed {
+      @include vertical-align();
+    }
+
+    .turnpoint {
+      flex: 0 $epoch-height;
+      background-color: red;
+      color: #fff;
+      font-size: 20px;
+      font-weight: 500;
+      border: 20px solid #fff;
+      border-radius: 50%;
+    }
+
+    .counter {
+      text-align: center;
+      @include vertical-align();
+    }
+
+    .agents {
+      flex: 1;
+
+      button {
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+#controls {
+  width: 100vw;
+  height: $controls-height;
+}

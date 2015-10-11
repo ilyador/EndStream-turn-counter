@@ -1,6 +1,27 @@
-$games-list-width: 300px;
-$epochs: 5;
-$epoch-height: 100vh/$epochs;
+/*
+   _ __ ___  ___  ___ _ __  ___
+  | '_ ` _ \| \ \/ / | '_ \/ __|
+  | | | | | | |>  <| | | | \__ \
+  |_| |_| |_|_/_/\_\_|_| |_|___/
+
+*/
+
+@mixin vertical-align($position: relative) {
+  position: $position;
+  top: 50%;
+  transform: translateY(-50%) translateZ(0);
+}
+
+/*
+         _       _           _
+        | |     | |         | |
+    __ _| | ___ | |__   __ _| |
+   / _` | |/ _ \| '_ \ / _` | |
+  | (_| | | (_) | |_) | (_| | |
+   \__, |_|\___/|_.__/ \__,_|_|
+    __/ |
+   |___/
+*/
 
 html {
   box-sizing: border-box;
@@ -14,57 +35,15 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+/*
+       _         _
+      | |       | |
+   ___| |_ _   _| | ___  ___
+  / __| __| | | | |/ _ \/ __|
+  \__ \ |_| |_| | |  __/\__ \
+  |___/\__|\__, |_|\___||___/
+            __/ |
+           |___/
+*/
 
-#board {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-
-  ul {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-  }
-
-  .player {
-    position: absolute;
-    height: 100%;
-    width: 50%;
-
-    &.player1 {
-
-    }
-
-    &.player2 {
-      left: 50vw;
-
-      .turnpoints {
-        order: 1;
-      }
-    }
-
-    .epoch {
-      display: flex;
-    }
-
-    .turnpoints,
-    .agents {
-      height: $epoch-height;
-      border: dotted 1px gray;
-    }
-
-    .turnpoints {
-      flex: 0 $epoch-height;
-    }
-
-    .agents {
-      flex: 1;
-      
-      button {
-        font-size: 20px;
-      }
-    }
-  }
-}
+@import "board";

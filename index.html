@@ -16,22 +16,37 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
   <script src="app.js"></script>
 </head>
-<body>
+<body ng-app="esCounter" ng-controller="boardController">
 
 
 
-<div id="board" ng-app="esCounter" ng-controller="boardController">
-  <ul class="player" ng-repeat="(player, stream) in board" ng-class="player">
-    <li class="epoch" ng-repeat="(epoch, turnpoint) in stream">
-      <div class="turnpoints">{{turnpoint.turns}}</div>
-      <div class="agents">
-        <button class="btn btn-primary" ng-click="agentDisintegrating(epoch, player)">
-          <i class="fa fa-user-plus"></i>
-        </button>
-      </div>
-    </li>
-  </ul>
-</div>
+  <div id="board">
+    <ul class="player"
+        ng-repeat="(player, stats) in board"
+        ng-class="player">
+      <li class="epoch"
+          ng-repeat="(epoch, turnpoint) in stats.stream">
+        <div class="turnpoint">
+          <div class="counter">{{turnpoint.turns}}</div>
+        </div>
+        <div class="agents">
+          <button class="btn btn-primary agent-placed"
+                  ng-class="{ 'disabled': player !== currentPlayer, 'btn-danger': turnpoint.counting }"
+                  ng-click="agentDisintegrating(epoch, player)">
+            <i class="fa"
+               ng-class="turnpoint.counting ? 'fa-user-times':'fa-user-plus'"></i>
+          </button>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+
+
+  <div id="controls">
+    <button class="btn btn-primary"
+            ng-click="endTurn()">End Turn {{currentPlayer}}</button>
+  </div>
 
 
 
