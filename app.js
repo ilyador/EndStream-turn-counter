@@ -2,31 +2,31 @@ angular.module('esCounter', []).controller('boardController', function($scope) {
 
   var streamStructure = {
     "1800": {
-      counting: false,
+      isCounting: false,
       turns: 2,
       cards: 5,
       score: 2
     },
     "1900": {
-      counting: false,
+      isCounting: false,
       turns: 3,
       cards: 4,
       score: 3
     },
     "2000": {
-      counting: false,
+      isCounting: false,
       turns: 4,
       cards: 3,
       score: 4
     },
     "2100": {
-      counting: false,
+      isCounting: false,
       turns: 5,
       cards: 2,
       score: 6
     },
     "2200": {
-      counting: false,
+      isCounting: false,
       turns: 10,
       cards: 1,
       score: 12
@@ -47,24 +47,27 @@ angular.module('esCounter', []).controller('boardController', function($scope) {
   };
 
   $scope.agentDisintegrating = function (epoch, player) {
-    var influencedTurnpoint = $scope.board[player].stream[epoch];
-    influencedTurnpoint.counting = !influencedTurnpoint.counting;
+    var turnpoint = $scope.board[player].stream[epoch];
+    turnpoint.isCounting = (!turnpoint.isCounting) ? $scope.currentPlayer : false;
   };
 
   $scope.endTurn = function () {
-    var player = $scope.currentPlayer;
-    var stream = $scope.board[player].stream;
+    var currentPlayer = $scope.currentPlayer;
+    var nextPlayer = ($scope.currentPlayer === "player1") ? "player2" : "player1";
 
-    _.forOwn(stream, function(turnpoint, epoch) {
-      if(turnpoint.counting && turnpoint.turns > 1) {
+    var reduceTurns = function(turnpoint, epoch) {
+      if(turnpoint.isCounting === nextPlayer && turnpoint.turns > 1) {
         turnpoint.turns -= 1;
       } else if (turnpoint.turns === 1) {
         turnpoint.turns = "Disintegrate or spin"
       } else {
         turnpoint.turns = streamStructure[epoch].turns;
       }
-    });
+    };
 
-    $scope.currentPlayer = (player === "player1") ? "player2":"player1"
+    _.forOwn($scope.board[currentPlayer].stream, reduceTurns);
+    _.forOwn($scope.board[nextPlayer].stream, reduceTurns);
+
+    $scope.currentPlayer = nextPlayer;
   }
 });
