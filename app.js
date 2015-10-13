@@ -56,12 +56,14 @@ angular.module('esCounter', []).controller('boardController', function($scope) {
     var nextPlayer = ($scope.currentPlayer === "player1") ? "player2" : "player1";
 
     var reduceTurns = function(turnpoint, epoch) {
-      if(turnpoint.isCounting === nextPlayer && turnpoint.turns > 1) {
-        turnpoint.turns -= 1;
-      } else if (turnpoint.turns === 1) {
-        turnpoint.turns = "Disintegrate or spin"
-      } else {
-        turnpoint.turns = streamStructure[epoch].turns;
+      if(turnpoint.isCounting === nextPlayer) {
+        if (turnpoint.turns > 1) {
+          turnpoint.turns -= 1;
+        } else if (turnpoint.turns === 1) {
+          turnpoint.turns = "Disintegrate or spin"
+        } else {
+          turnpoint.turns = streamStructure[epoch].turns;
+        }
       }
     };
 
