@@ -7,7 +7,9 @@
   <meta name="author" content="Ilya Dorman">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Sorts+Mill+Goudy:400,400italic">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu+Condensed">
+
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="stylesheets/style.css"/>
@@ -27,7 +29,8 @@
       <li class="epoch"
           ng-repeat="(epoch, turnpoint) in stats.stream">
         <div class="turnpoint">
-          <div class="counter">{{turnpoint.turns}}</div>
+          <div class="counter"
+               ng-class="{ 'disintegrate'  : turnpoint.turns === 'Disintegrate or spin' }">{{turnpoint.turns}}</div>
         </div>
         <div class="agents">
           <button class="btn btn-primary agent-placed"
