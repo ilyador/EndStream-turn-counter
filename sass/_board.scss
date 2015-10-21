@@ -78,4 +78,9 @@ $controls-height: (100vh - $board-height);
 #controls {
   width: 100vw;
   height: $controls-height;
+
+  .current-player {
+    font-weight: 500;
+    text-transform: uppercase;
+  }
 }

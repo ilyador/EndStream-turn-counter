@@ -49,7 +49,9 @@
 
   <div id="controls">
     <button class="btn btn-primary btn-lg btn-block"
-            ng-click="endTurn()">End Turn {{currentPlayer}}</button>
+            ng-click="endTurn()">End Turn <span class="current-player">{{currentPlayer}}</span></button>
+    <button class="btn btn-primary btn-lg btn-block"
+            ng-click="newGame()">New Game</button>
   </div>
 
 

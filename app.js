@@ -76,6 +76,11 @@ endStreamCounter.controller('boardController', function($scope, streamStructure)
     turnpoint.isCounting = (!turnpoint.isCounting) ? $scope.currentPlayer : false;
   };
 
+  $scope.newGame = function () {
+    $scope.board = makeBoard();
+    localStorage.removeItem("board");
+  };
+
   $scope.endTurn = function () {
     _.forOwn($scope.board[$scope.currentPlayer].stream, reduceTurns);
     _.forOwn($scope.board[$scope.nextPlayer].stream, reduceTurns);

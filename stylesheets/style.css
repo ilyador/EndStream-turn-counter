@@ -117,3 +117,8 @@ body {
   width: 100vw;
   height: 20vh;
 }
+/* line 82, ../sass/_board.scss */
+#controls .current-player {
+  font-weight: 500;
+  text-transform: uppercase;
+}
