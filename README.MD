@@ -1,3 +1,1 @@
 # EndStream card game helper app
-
-test.
