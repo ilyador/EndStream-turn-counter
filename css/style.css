@@ -1,0 +1,90 @@
+/*
+   _ __ ___  ___  ___ _ __  ___
+  | '_ ` _ \| \ \/ / | '_ \/ __|
+  | | | | | | |>  <| | | | \__ \
+  |_| |_| |_|_/_/\_\_|_| |_|___/
+
+*/
+/*
+         _       _           _
+        | |     | |         | |
+    __ _| | ___ | |__   __ _| |
+   / _` | |/ _ \| '_ \ / _` | |
+  | (_| | | (_) | |_) | (_| | |
+   \__, |_|\___/|_.__/ \__,_|_|
+    __/ |
+   |___/
+*/
+html {
+  box-sizing: border-box; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
+
+body {
+  font-family: 'Ubuntu', sans-serif; }
+
+/*
+       _         _
+      | |       | |
+   ___| |_ _   _| | ___  ___
+  / __| __| | | | |/ _ \/ __|
+  \__ \ |_| |_| | |  __/\__ \
+  |___/\__|\__, |_|\___||___/
+            __/ |
+           |___/
+*/
+#board {
+  width: 100vw;
+  height: 80vh; }
+  #board .player {
+    width: 50%;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    list-style-type: none; }
+    #board .player.player2 {
+      left: 50vw; }
+      #board .player.player2 .turnpoint {
+        order: 1; }
+    #board .player .epoch {
+      display: flex;
+      height: 16vh; }
+    #board .player .turnpoint,
+    #board .player .agents {
+      height: 100%; }
+    #board .player .agents {
+      text-align: center; }
+    #board .player .agent-placed {
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%) translateZ(0); }
+    #board .player .turnpoint {
+      flex: 0 16vh;
+      background-color: #3a3c40;
+      border: 20px solid #fff;
+      border-radius: 50%; }
+    #board .player .counter {
+      color: #fff;
+      font-size: 40px;
+      font-weight: 500;
+      text-align: center;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%) translateZ(0); }
+      #board .player .counter.disintegrate {
+        font-size: 14px;
+        font-weight: 300; }
+    #board .player .agents {
+      flex: 1; }
+      #board .player .agents button {
+        font-size: 20px; }
+
+#controls {
+  width: 100vw;
+  height: 20vh; }
+  #controls .current-player {
+    font-weight: 500;
+    text-transform: uppercase; }
+
+/*# sourceMappingURL=style.css.map */

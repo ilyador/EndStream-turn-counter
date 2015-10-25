@@ -1,6 +1,6 @@
 var endStreamCounter = angular.module('endStreamCounter', []);
 
-
+/**/
 endStreamCounter.constant('streamStructure', {
   "1800": {
     isCounting: false,
