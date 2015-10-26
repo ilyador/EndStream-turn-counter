@@ -5,7 +5,7 @@
 
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="author" content="Ilya Dorman">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu+Condensed">
@@ -24,8 +24,8 @@
 
   <div id="board">
     <ul class="player"
-        ng-repeat="(player, stats) in board"
-        ng-class="player">
+        ng-repeat="(streamOwner, stats) in board"
+        ng-class="streamOwner">
       <li class="epoch"
           ng-repeat="(epoch, turnpoint) in stats.stream">
         <div class="turnpoint">
@@ -36,7 +36,7 @@
           <button class="btn btn-primary agent-placed"
                   ng-class="{ 'btn-danger'  : turnpoint.isCounting === 'player1',
                               'btn-warning' : turnpoint.isCounting === 'player2' }"
-                  ng-click="agentDisintegrating(epoch, player)">
+                  ng-click="agentCounting(epoch, streamOwner)">
             <i class="fa"
                ng-class="turnpoint.isCounting ? 'fa-user-times' : 'fa-user-plus'"></i>
           </button>
@@ -52,7 +52,7 @@
             ng-click="endTurn()">End Turn <span class="current-player">{{currentPlayer}}</span></button>
     <button class="btn btn-primary btn-lg btn-block"
             ng-click="newGame()">New Game</button>
-  </div><!---->
+  </div>
 
 
 

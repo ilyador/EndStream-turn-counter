@@ -67,13 +67,20 @@ endStreamCounter.controller('boardController', function($scope, streamStructure)
     $scope.currentPlayer = ($scope.currentPlayer === "player1") ? "player2" : "player1";
   }
 
+
   $scope.currentPlayer = "player1";
   $scope.nextPlayer = "player2";
   $scope.board = (localStorage.board) ? JSON.parse(localStorage.board) : makeBoard();
 
-  $scope.agentDisintegrating = function (epoch, player) {
-    var turnpoint = $scope.board[player].stream[epoch];
-    turnpoint.isCounting = (!turnpoint.isCounting) ? $scope.currentPlayer : false;
+  $scope.agentCounting = function (epoch, streamOwner) { // An agent is placed on a turnpoint
+
+    var turnpoint = $scope.board[streamOwner].stream[epoch];
+    if (!turnpoint.isCounting) {
+      turnpoint.isCounting = $scope.currentPlayer;
+    } else {
+      turnpoint.turns = streamStructure[epoch].turns; // Resetting counter when agent is removed
+      turnpoint.isCounting = false;
+    }
   };
 
   $scope.newGame = function () {
