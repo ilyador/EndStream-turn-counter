@@ -6,12 +6,14 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="author" content="Ilya Dorman">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-title" content="EndStream">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu+Condensed">
-
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="css/style.css"/>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
@@ -33,9 +35,9 @@
                ng-class="{ 'disintegrate'  : turnpoint.turns === 'Disintegrate or spin' }">{{turnpoint.turns}}</div>
         </div>
         <div class="agents">
-          <button class="btn btn-primary agent-placed"
-                  ng-class="{ 'btn-danger'  : turnpoint.isCounting === 'player1',
-                              'btn-warning' : turnpoint.isCounting === 'player2' }"
+          <button class="btn btn-primary-outline place-agent"
+                  ng-class="{ 'btn-danger-outline'  : turnpoint.isCounting === 'player1',
+                              'btn-warning-outline' : turnpoint.isCounting === 'player2' }"
                   ng-click="agentCounting(epoch, streamOwner)">
             <i class="fa"
                ng-class="turnpoint.isCounting ? 'fa-user-times' : 'fa-user-plus'"></i>

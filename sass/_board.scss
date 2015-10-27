@@ -41,7 +41,8 @@ $controls-height: (100vh - $board-height);
       text-align: center;
     }
 
-    .agent-placed {
+    .place-agent {
+      outline: none;
       @include vertical-align();
     }
 

@@ -55,7 +55,8 @@ body {
       height: 100%; }
     #board .player .agents {
       text-align: center; }
-    #board .player .agent-placed {
+    #board .player .place-agent {
+      outline: none;
       position: relative;
       top: 50%;
       transform: translateY(-50%) translateZ(0); }
