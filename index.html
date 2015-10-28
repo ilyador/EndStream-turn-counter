@@ -32,7 +32,7 @@
           ng-repeat="(epoch, turnpoint) in stats.stream">
         <div class="turnpoint">
           <button class="btn btn-primary btn-block disintegrate {{getAgentColorClass(turnpoint.countingAgent)}}"
-                  ng-class="turnpoint.turns === 'Disintegrate or spin' ? 'text' : 'disabled'">
+                  ng-class="turnpoint.turns === 'Disintegrate or spin' ? 'text' : 'counting'">
             {{turnpoint.turns}}
           </button>
         </div>
@@ -51,9 +51,12 @@
 
 
   <div id="controls">
-    <button class="btn btn-primary btn-lg btn-block"
-            ng-click="endTurn()">End Turn <span class="current-player">{{currentPlayer}}</span></button>
-    <button class="btn btn-primary btn-lg btn-block"
+    <button class="btn btn-primary btn-lg btn-block end-turn"
+            ng-click="endTurn()"
+            ng-class="getAgentColorClass(currentPlayer)">
+      End Turn <span class="current-player">{{currentPlayer}}</span>
+    </button>
+    <button class="btn btn-primary btn-block new-game"
             ng-click="newGame()">New Game</button>
   </div>
 

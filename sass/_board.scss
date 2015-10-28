@@ -3,7 +3,7 @@ $epochs: 5;
 $board-height: 80vh;
 $epoch-height: $board-height/$epochs;
 $controls-height: (100vh - $board-height);
-$global-padding: 10px;
+$global-padding: 6px;
 
 #board {
   width: 100vw;
@@ -22,6 +22,10 @@ $global-padding: 10px;
 
     &.player2 {
       left: 50vw;
+
+      .agents {
+        padding: $global-padding $global-padding $global-padding $global-padding/2;
+      }
 
       .turnpoint {
         order: 1;
@@ -43,8 +47,8 @@ $global-padding: 10px;
     }
 
     .agents {
-      flex: 0 90px;
-      padding: 10px;
+      flex: 0 64px;
+      padding: $global-padding $global-padding/2 $global-padding $global-padding;
     }
 
     .turnpoint {
@@ -62,9 +66,16 @@ $global-padding: 10px;
     .disintegrate {
       font-weight: 500;
 
+      &.counting {
+        
+      }
+
       &.text {
+        padding: 0;
         font-size: 14px;
+        line-height: 16px;
         font-weight: 300;
+        white-space: normal;
       }
     }
   }
@@ -78,5 +89,9 @@ $global-padding: 10px;
   .current-player {
     font-weight: 500;
     text-transform: uppercase;
+  }
+
+  .new-game {
+    font-weight: 300;
   }
 }

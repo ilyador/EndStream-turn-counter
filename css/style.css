@@ -45,9 +45,11 @@ body {
     list-style-type: none; }
     #board .player.player2 {
       left: 50vw; }
+      #board .player.player2 .agents {
+        padding: 6px 6px 6px 3px; }
       #board .player.player2 .turnpoint {
         order: 1;
-        padding-right: 10px;
+        padding-right: 6px;
         padding-left: 0; }
     #board .player .epoch {
       display: flex;
@@ -55,11 +57,11 @@ body {
     #board .player .turnpoint,
     #board .player .agents {
       height: 100%;
-      padding-left: 10px;
+      padding-left: 6px;
       text-align: center; }
     #board .player .agents {
-      flex: 0 90px;
-      padding: 10px; }
+      flex: 0 64px;
+      padding: 6px 3px 6px 6px; }
     #board .player .turnpoint {
       flex: 1; }
     #board .player .place-agent,
@@ -73,15 +75,20 @@ body {
     #board .player .disintegrate {
       font-weight: 500; }
       #board .player .disintegrate.text {
+        padding: 0;
         font-size: 14px;
-        font-weight: 300; }
+        line-height: 16px;
+        font-weight: 300;
+        white-space: normal; }
 
 #controls {
   width: 100vw;
   height: 20vh;
-  padding: 0 10px; }
+  padding: 0 6px; }
   #controls .current-player {
     font-weight: 500;
     text-transform: uppercase; }
+  #controls .new-game {
+    font-weight: 300; }
 
 /*# sourceMappingURL=style.css.map */
