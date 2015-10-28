@@ -35,42 +35,30 @@ $controls-height: (100vh - $board-height);
     .turnpoint,
     .agents {
       height: 100%;
-    }
-
-    .agents {
       text-align: center;
     }
 
-    .place-agent {
+    .agents {
+      flex: 0 $epoch-height;
+    }
+
+    .turnpoint {
+      flex: 1;
+    }
+
+    .place-agent,
+    .disintegrate {
+      font-size: 20px;
       outline: none;
       @include vertical-align();
     }
 
-    .turnpoint {
-      flex: 0 $epoch-height;
-      background-color: hsl(219, 5%, 24%);
-      border: 20px solid #fff;
-      border-radius: 50%;
-    }
-
-    .counter {
-      color: #fff;
-      font-size: 40px;
+    .disintegrate {
       font-weight: 500;
-      text-align: center;
-      @include vertical-align();
 
-      &.disintegrate {
+      &.text {
         font-size: 14px;
         font-weight: 300;
-      }
-    }
-
-    .agents {
-      flex: 1;
-
-      button {
-        font-size: 20px;
       }
     }
   }
