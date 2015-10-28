@@ -5,6 +5,14 @@ $epoch-height: $board-height/$epochs;
 $controls-height: (100vh - $board-height);
 $global-padding: 6px;
 
+#game {
+  background-color: hsl(223, 7%, 6%);
+
+  .btn {
+    outline: none;
+  }
+}
+
 #board {
   width: 100vw;
   height: $board-height;
@@ -16,9 +24,7 @@ $global-padding: 6px;
     padding: 0;
     list-style-type: none;
 
-    &.player1 {
-
-    }
+    &.player1 {}
 
     &.player2 {
       left: 50vw;
@@ -57,9 +63,8 @@ $global-padding: 6px;
 
     .place-agent,
     .disintegrate {
-      height: 50px;
-      font-size: 20px;
-      outline: none;
+      height: 56px;
+      font-size: 24px;
       @include vertical-align();
     }
 
@@ -67,7 +72,13 @@ $global-padding: 6px;
       font-weight: 500;
 
       &.counting {
-        
+        background-image: repeating-linear-gradient(
+          54deg,
+          transparent,
+          transparent 8px,
+          hsla(0, 0%, 0%, .15) 8px,
+          hsla(0, 0%, 0%, .15) 16px
+        );;
       }
 
       &.text {
