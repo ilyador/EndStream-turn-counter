@@ -31,13 +31,13 @@
       <li class="epoch"
           ng-repeat="(epoch, turnpoint) in stats.stream">
         <div class="turnpoint">
-          <button class="disintegrate btn btn-primary {{getAgentColorClass(turnpoint.countingAgent)}}"
+          <button class="btn btn-primary btn-block disintegrate {{getAgentColorClass(turnpoint.countingAgent)}}"
                   ng-class="turnpoint.turns === 'Disintegrate or spin' ? 'text' : 'disabled'">
             {{turnpoint.turns}}
           </button>
         </div>
         <div class="agents">
-          <button class="btn btn-primary place-agent"
+          <button class="btn btn-primary btn-block place-agent"
                   ng-class="getAgentColorClass(turnpoint.countingAgent)"
                   ng-click="agentCounting(epoch, streamOwner)">
             <i class="fa"

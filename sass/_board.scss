@@ -3,6 +3,7 @@ $epochs: 5;
 $board-height: 80vh;
 $epoch-height: $board-height/$epochs;
 $controls-height: (100vh - $board-height);
+$global-padding: 10px;
 
 #board {
   width: 100vw;
@@ -24,6 +25,8 @@ $controls-height: (100vh - $board-height);
 
       .turnpoint {
         order: 1;
+        padding-right: $global-padding;
+        padding-left: 0;
       }
     }
 
@@ -35,11 +38,13 @@ $controls-height: (100vh - $board-height);
     .turnpoint,
     .agents {
       height: 100%;
+      padding-left: $global-padding;
       text-align: center;
     }
 
     .agents {
-      flex: 0 $epoch-height;
+      flex: 0 90px;
+      padding: 10px;
     }
 
     .turnpoint {
@@ -48,6 +53,7 @@ $controls-height: (100vh - $board-height);
 
     .place-agent,
     .disintegrate {
+      height: 50px;
       font-size: 20px;
       outline: none;
       @include vertical-align();
@@ -67,6 +73,7 @@ $controls-height: (100vh - $board-height);
 #controls {
   width: 100vw;
   height: $controls-height;
+  padding: 0 $global-padding;
 
   .current-player {
     font-weight: 500;

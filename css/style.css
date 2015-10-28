@@ -46,20 +46,25 @@ body {
     #board .player.player2 {
       left: 50vw; }
       #board .player.player2 .turnpoint {
-        order: 1; }
+        order: 1;
+        padding-right: 10px;
+        padding-left: 0; }
     #board .player .epoch {
       display: flex;
       height: 16vh; }
     #board .player .turnpoint,
     #board .player .agents {
       height: 100%;
+      padding-left: 10px;
       text-align: center; }
     #board .player .agents {
-      flex: 0 16vh; }
+      flex: 0 90px;
+      padding: 10px; }
     #board .player .turnpoint {
       flex: 1; }
     #board .player .place-agent,
     #board .player .disintegrate {
+      height: 50px;
       font-size: 20px;
       outline: none;
       position: relative;
@@ -73,7 +78,8 @@ body {
 
 #controls {
   width: 100vw;
-  height: 20vh; }
+  height: 20vh;
+  padding: 0 10px; }
   #controls .current-player {
     font-weight: 500;
     text-transform: uppercase; }
