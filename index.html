@@ -19,6 +19,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
   <script src="app.js"></script>
+  <script src="live.js"></script>
 </head>
 <body ng-app="endStreamCounter" ng-controller="boardController">
 <div id="game">
@@ -33,7 +34,7 @@
           ng-repeat="(epoch, turnpoint) in stats.stream">
         <div class="turnpoint">
           <button class="btn btn-primary btn-block disintegrate {{getAgentColorClass(turnpoint.countingAgent)}}"
-                  ng-class="turnpoint.turns === 'Disintegrate or spin' ? 'text' : 'counting'">
+                  ng-class="turnpoint.turns === 'Disintegrate or spin' ? 'text' : 'disabled'">
             {{turnpoint.turns}}
           </button>
         </div>

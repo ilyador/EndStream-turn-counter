@@ -2691,13 +2691,14 @@ input[type="checkbox"].disabled {
 }
 
 .btn:active, .btn.active {
-  background-image: none;
   outline: 0;
 }
 
 .btn.disabled, .btn:disabled {
   cursor: not-allowed;
-  opacity: .65;
+  background-image: -webkit-repeating-linear-gradient(36deg, transparent, transparent 8px, rgba(0, 0, 0, .15) 8px, rgba(0, 0, 0, .15) 16px);
+  background-image:      -o-repeating-linear-gradient(36deg, transparent, transparent 8px, rgba(0, 0, 0, .15) 8px, rgba(0, 0, 0, .15) 16px);
+  background-image:         repeating-linear-gradient(54deg, transparent, transparent 8px, rgba(0, 0, 0, .15) 8px, rgba(0, 0, 0, .15) 16px);
 }
 
 a.btn.disabled,
@@ -2722,7 +2723,6 @@ fieldset[disabled] a.btn {
 .open > .btn-primary.dropdown-toggle {
   color: white;
   background-color: #222325;
-  background-image: none;
   border-color: #1d1e20;
 }
 
@@ -2762,7 +2762,6 @@ fieldset[disabled] a.btn {
 .open > .btn-secondary.dropdown-toggle {
   color: #36393a;
   background-color: #e6e6e6;
-  background-image: none;
   border-color: #adadad;
 }
 
@@ -2802,7 +2801,6 @@ fieldset[disabled] a.btn {
 .open > .btn-info.dropdown-toggle {
   color: white;
   background-color: #30b1d5;
-  background-image: none;
   border-color: #2aaccf;
 }
 
@@ -2842,7 +2840,6 @@ fieldset[disabled] a.btn {
 .open > .btn-success.dropdown-toggle {
   color: white;
   background-color: #449c44;
-  background-image: none;
   border-color: #419541;
 }
 
@@ -2882,7 +2879,6 @@ fieldset[disabled] a.btn {
 .open > .btn-warning.dropdown-toggle {
   color: white;
   background-color: #eb961e;
-  background-image: none;
   border-color: #eb9114;
 }
 
@@ -2922,7 +2918,6 @@ fieldset[disabled] a.btn {
 .open > .btn-danger.dropdown-toggle {
   color: white;
   background-color: #c92f2c;
-  background-image: none;
   border-color: #c02d2a;
 }
 
@@ -2962,7 +2957,6 @@ fieldset[disabled] a.btn {
 .open > .btn-player1.dropdown-toggle {
   color: white;
   background-color: #a34100;
-  background-image: none;
   border-color: #993d00;
 }
 
@@ -3002,7 +2996,6 @@ fieldset[disabled] a.btn {
 .open > .btn-player2.dropdown-toggle {
   color: white;
   background-color: #5a009e;
-  background-image: none;
   border-color: #540094;
 }
 

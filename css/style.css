@@ -35,7 +35,8 @@ body {
            |___/
 */
 #game {
-  background-color: #0e0f10; }
+  background-color: #0e0f10;
+  overflow: hidden; }
   #game .btn {
     outline: none; }
 
@@ -78,8 +79,6 @@ body {
       transform: translateY(-50%) translateZ(0); }
     #board .player .disintegrate {
       font-weight: 500; }
-      #board .player .disintegrate.counting {
-        background-image: repeating-linear-gradient(54deg, transparent, transparent 8px, rgba(0, 0, 0, 0.15) 8px, rgba(0, 0, 0, 0.15) 16px); }
       #board .player .disintegrate.text {
         padding: 0;
         font-size: 14px;
