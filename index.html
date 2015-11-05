@@ -19,7 +19,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
   <script src="app.js"></script>
-  <script src="live.js"></script>
 </head>
 <body ng-app="endStreamCounter" ng-controller="boardController">
 <div id="game">
@@ -53,6 +52,12 @@
 
 
   <div id="controls">
+    <div id="actions">
+      <div class="action" ng-repeat="i in getActions(actions) track by $index">
+        <button class="btn btn-primary btn-block"><i class="fa fa-circle"></i></button>
+      </div>
+    </div>
+
     <button class="btn btn-primary btn-lg btn-block end-turn"
             ng-click="endTurn()"
             ng-class="getAgentColorClass(currentPlayer)">

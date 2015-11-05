@@ -74,10 +74,14 @@ endStreamCounter.controller('boardController', function($scope, streamStructure,
   }
 
 
+  // Setup
+  $scope.actions = 6
+  $scope.getActions = function(actions) { return new Array(actions) }
   $scope.currentPlayer = "player1"
   $scope.nextPlayer = "player2"
   $scope.board = (localStorage.board) ? JSON.parse(localStorage.board) : makeBoard()
 
+  // Board actions
   $scope.agentCounting = function (epoch, streamOwner) { // An agent is placed on a turnpoint
     var turnpoint = $scope.board[streamOwner].stream[epoch]
     if (!turnpoint.countingAgent) {

@@ -36,60 +36,63 @@ body {
 */
 #game {
   background-color: #0e0f10;
-  overflow: hidden; }
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh; }
   #game .btn {
     outline: none; }
 
-#board {
-  width: 100vw;
-  height: 80vh; }
-  #board .player {
-    width: 50%;
+#board .player {
+  width: 50%;
+  margin: 0;
+  padding: 0;
+  list-style-type: none; }
+  #board .player.player2 {
     position: absolute;
-    margin: 0;
-    padding: 0;
-    list-style-type: none; }
-    #board .player.player2 {
-      left: 50vw; }
-      #board .player.player2 .agents {
-        padding: 6px 6px 6px 3px; }
-      #board .player.player2 .turnpoint {
-        order: 1;
-        padding-right: 6px;
-        padding-left: 0; }
-    #board .player .epoch {
-      display: flex;
-      height: 16vh; }
-    #board .player .turnpoint,
-    #board .player .agents {
-      height: 100%;
-      padding-left: 6px;
-      text-align: center; }
-    #board .player .agents {
-      flex: 0 64px;
-      padding: 6px 3px 6px 6px; }
-    #board .player .turnpoint {
-      flex: 1; }
-    #board .player .place-agent,
-    #board .player .disintegrate {
-      height: 56px;
-      font-size: 24px;
-      position: relative;
-      top: 50%;
-      transform: translateY(-50%) translateZ(0); }
-    #board .player .disintegrate {
-      font-weight: 500; }
-      #board .player .disintegrate.text {
-        padding: 0;
-        font-size: 14px;
-        line-height: 16px;
-        font-weight: 300;
-        white-space: normal; }
+    top: 0;
+    left: 50vw; }
+    #board .player.player2 .agents {
+      padding: 0 6px 0 3px; }
+    #board .player.player2 .turnpoint {
+      order: 1;
+      padding-right: 6px;
+      padding-left: 0; }
+  #board .player .epoch {
+    display: flex;
+    margin: 6px 0; }
+  #board .player .turnpoint,
+  #board .player .agents {
+    padding-left: 6px;
+    text-align: center; }
+  #board .player .agents {
+    flex: 0 64px;
+    padding: 0 3px 0 6px; }
+  #board .player .turnpoint {
+    flex: 1; }
+  #board .player .place-agent,
+  #board .player .disintegrate {
+    height: 56px;
+    font-size: 24px; }
+  #board .player .disintegrate {
+    font-weight: 500; }
+    #board .player .disintegrate.text {
+      padding: 0;
+      font-size: 14px;
+      line-height: 16px;
+      font-weight: 300;
+      white-space: normal; }
 
 #controls {
   width: 100vw;
-  height: 20vh;
+  margin-top: 12px;
   padding: 0 6px; }
+  #controls #actions {
+    display: flex; }
+    #controls #actions .action {
+      flex: 1;
+      margin: 0 0 6px 6px; }
+      #controls #actions .action:first-child {
+        margin-left: 0; }
   #controls .current-player {
     font-weight: 500;
     text-transform: uppercase; }

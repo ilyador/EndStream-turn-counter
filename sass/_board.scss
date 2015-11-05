@@ -8,6 +8,8 @@ $global-padding: 6px;
 #game {
   background-color: hsl(223, 7%, 6%);
   overflow: hidden;
+  width: 100vw;
+  height: 100vh;
 
   .btn {
     outline: none;
@@ -15,12 +17,8 @@ $global-padding: 6px;
 }
 
 #board {
-  width: 100vw;
-  height: $board-height;
-
   .player {
     width: 50%;
-    position: absolute;
     margin: 0;
     padding: 0;
     list-style-type: none;
@@ -28,10 +26,12 @@ $global-padding: 6px;
     &.player1 {}
 
     &.player2 {
+      position: absolute;
+      top: 0;
       left: 50vw;
 
       .agents {
-        padding: $global-padding $global-padding $global-padding $global-padding/2;
+        padding: 0 $global-padding 0 $global-padding/2;
       }
 
       .turnpoint {
@@ -43,19 +43,18 @@ $global-padding: 6px;
 
     .epoch {
       display: flex;
-      height: $epoch-height;
+      margin: $global-padding 0;
     }
 
     .turnpoint,
     .agents {
-      height: 100%;
       padding-left: $global-padding;
       text-align: center;
     }
 
     .agents {
       flex: 0 64px;
-      padding: $global-padding $global-padding/2 $global-padding $global-padding;
+      padding: 0 $global-padding/2 0 $global-padding;
     }
 
     .turnpoint {
@@ -66,7 +65,6 @@ $global-padding: 6px;
     .disintegrate {
       height: 56px;
       font-size: 24px;
-      @include vertical-align();
     }
 
     .disintegrate {
@@ -85,8 +83,21 @@ $global-padding: 6px;
 
 #controls {
   width: 100vw;
-  height: $controls-height;
+  margin-top: $global-padding * 2;
   padding: 0 $global-padding;
+
+  #actions {
+    display: flex;
+
+    .action {
+      flex: 1;
+      margin: 0 0 $global-padding $global-padding;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
 
   .current-player {
     font-weight: 500;
