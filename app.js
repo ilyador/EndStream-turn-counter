@@ -1,6 +1,6 @@
 var endStreamCounter = angular.module('endStreamCounter', [])
 
-/**/
+
 endStreamCounter.constant('streamStructure', {
   "1800": {
     countingAgent: false,
@@ -35,13 +35,7 @@ endStreamCounter.constant('streamStructure', {
 })
 
 
-endStreamCounter.constant('playerClasses', {
-  player1: "btn-player1",
-  player2: "btn-player2"
-})
-
-
-endStreamCounter.controller('boardController', function($scope, streamStructure, playerClasses) {
+endStreamCounter.controller('boardController', function($scope, streamStructure) {
 
   function makeBoard() {
     return {
@@ -73,12 +67,15 @@ endStreamCounter.controller('boardController', function($scope, streamStructure,
     $scope.currentPlayer = ($scope.currentPlayer === "player1") ? "player2" : "player1"
   }
 
+  function resetActions() {
+    return Array.apply(null, Array(6)).map(function(){return false})
+  }
+
 
   // Setup
-  $scope.actions = 6
-  $scope.getActions = function(actions) { return new Array(actions) }
   $scope.currentPlayer = "player1"
   $scope.nextPlayer = "player2"
+  $scope.actions = resetActions()
   $scope.board = (localStorage.board) ? JSON.parse(localStorage.board) : makeBoard()
 
   // Board actions
@@ -92,15 +89,29 @@ endStreamCounter.controller('boardController', function($scope, streamStructure,
     }
   }
 
-  $scope.getAgentColorClass = function (agent) {
-    return playerClasses[agent]
+  $scope.actionToggle = function (index) {
+    $scope.actions[index] = !$scope.actions[index];
+  }
+
+  $scope.allActionsUsed = function() {
+    return $scope.actions.every(function(item){
+      return item;
+    })
+  }
+
+  $scope.saveBoard = function () {
+    localStorage.board = JSON.stringify($scope.board)
   }
 
   $scope.endTurn = function () {
+    if (!$scope.allActionsUsed($scope.actions)) {
+      return;
+    }
+
     _.forOwn($scope.board[$scope.currentPlayer].stream, reduceTurns)
     _.forOwn($scope.board[$scope.nextPlayer].stream, reduceTurns)
     swapPlayers()
-    localStorage.board = JSON.stringify($scope.board)
+    $scope.actions = resetActions()
   }
 
   $scope.newGame = function () {

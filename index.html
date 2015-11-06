@@ -25,21 +25,20 @@
 
 
 
-  <div id="board">
+  <div id="board" ng-click="saveBoard()">
     <ul class="player"
         ng-repeat="(streamOwner, stats) in board"
         ng-class="streamOwner">
       <li class="epoch"
           ng-repeat="(epoch, turnpoint) in stats.stream">
         <div class="turnpoint">
-          <button class="btn btn-primary btn-block disintegrate {{getAgentColorClass(turnpoint.countingAgent)}}"
+          <button class="btn btn-primary btn-block disintegrate btn-{{turnpoint.countingAgent}}"
                   ng-class="turnpoint.turns === 'Disintegrate or spin' ? 'text' : 'disabled'">
             {{turnpoint.turns}}
           </button>
         </div>
         <div class="agents">
-          <button class="btn btn-primary btn-block place-agent"
-                  ng-class="getAgentColorClass(turnpoint.countingAgent)"
+          <button class="btn btn-primary btn-block place-agent btn-{{turnpoint.countingAgent}}"
                   ng-click="agentCounting(epoch, streamOwner)">
             <i class="fa"
                ng-class="turnpoint.countingAgent ? 'fa-user-times' : 'fa-user-plus'"></i>
@@ -53,14 +52,17 @@
 
   <div id="controls">
     <div id="actions">
-      <div class="action" ng-repeat="i in getActions(actions) track by $index">
-        <button class="btn btn-primary btn-block"><i class="fa fa-circle"></i></button>
+      <div class="action" ng-repeat="i in actions track by $index">
+        <button class="btn btn-primary btn-block"
+                ng-click="actionToggle($index)">
+          <i class="fa"
+             ng-class="actions[$index] ? 'fa-circle' : 'fa-circle-thin'"></i></button>
       </div>
     </div>
 
-    <button class="btn btn-primary btn-lg btn-block end-turn"
+    <button class="btn btn-primary btn-lg btn-block end-turn btn-{{currentPlayer}}"
             ng-click="endTurn()"
-            ng-class="getAgentColorClass(currentPlayer)">
+            ng-disabled="!allActionsUsed()">
       End Turn <span class="current-player">{{currentPlayer}}</span>
     </button>
     <button class="btn btn-primary btn-block new-game"
