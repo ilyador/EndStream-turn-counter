@@ -21,11 +21,11 @@
   <script src="app.js"></script>
 </head>
 <body ng-app="endStreamCounter" ng-controller="boardController">
-<div id="game">
+<div id="game" ng-click="saveBoard()">
 
 
 
-  <div id="board" ng-click="saveBoard()">
+  <div id="board">
     <ul class="player"
         ng-repeat="(streamOwner, stats) in board"
         ng-class="streamOwner">
