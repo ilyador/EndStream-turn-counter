@@ -66,10 +66,21 @@
       <i class="fa fa-circle" ng-repeat="i in board.defensiveActions track by $index"></i>
     </p>
 
-    <button class="btn btn-primary btn-lg btn-block end-turn btn-{{board.currentPlayer}}"
-            ng-click="endTurn()">
-      End Turn <span class="current-player">{{board.currentPlayer}}</span>
-    </button>
+    <div class="turns">
+      <div class="score player1">
+        <h2>{{board.players.player1.score}}</h2>
+        <h6>{{board.players.player1.name}}</h6>
+      </div>
+      <div class="turn">
+        <button class="btn btn-primary btn-lg btn-block end-turn btn-{{board.currentPlayer}}"
+                ng-click="endTurn()">
+          End Turn <span class="current-player">{{board.currentPlayer}}</span>
+        </button>
+      </div>
+      <div class="score player2">
+        <h2>{{board.players.player2.score}}</h2>
+        <h6>{{board.players.player2.name}}</h6>
+      </div>    </div>
     <button class="btn btn-primary btn-block new-game"
             ng-click="newGame()">New Game</button>
   </div>

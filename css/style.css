@@ -23,7 +23,8 @@ html {
 
 body {
   font-family: 'Ubuntu', sans-serif;
-  background-color: #0e0f10; }
+  background-color: #0e0f10;
+  color: #5e6164; }
 
 /*
        _         _
@@ -99,10 +100,25 @@ body {
   #controls .defensive-actions {
     font-family: 'Ubuntu Condensed', sans-serif;
     font-size: 12px;
-    color: #5e6164;
     margin: 6px; }
     #controls .defensive-actions .fa {
       margin: 0 2px; }
+  #controls .turns {
+    display: flex; }
+    #controls .turns .turn {
+      flex: 1; }
+    #controls .turns .score {
+      flex: 0 48px;
+      text-align: center; }
+      #controls .turns .score h2 {
+        margin: 1px 0 0;
+        font-size: 37px;
+        line-height: 37px; }
+      #controls .turns .score h6 {
+        margin: 0;
+        font-family: 'Ubuntu Condensed', sans-serif;
+        font-size: 12px;
+        line-height: 12px; }
   #controls .current-player {
     font-weight: 600;
     text-transform: uppercase; }

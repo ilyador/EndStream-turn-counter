@@ -58,11 +58,13 @@ endStreamCounter.controller('boardController', function($scope, game) {
 
     board.players[ game.playerNames.p1 ] = {
       stream: _.merge({}, game.streamStructure),
+      name: game.playerNames.p1,
       score: 0
     }
 
     board.players[ game.playerNames.p2 ] = {
       stream: _.merge({}, game.streamStructure),
+      name: game.playerNames.p2,
       score: 0
     }
 
@@ -98,7 +100,7 @@ endStreamCounter.controller('boardController', function($scope, game) {
 
 
   // Start
-  if (localStorage.ongoingGame) {
+  if (localStorage.board) {
     $scope.board = JSON.parse(localStorage.board)
   } else {
     $scope.board = makeBoard()
@@ -138,13 +140,11 @@ endStreamCounter.controller('boardController', function($scope, game) {
 
   $scope.newGame = function () {
     localStorage.removeItem("board")
-    localStorage.ongoingGame = false
     $scope.board = makeBoard()
   }
 
   $scope.saveBoard = function ($event) { // Every click saves game state
     if (angular.element($event.target).hasClass("new-game")) return
-    localStorage.ongoingGame = true
     localStorage.board = JSON.stringify($scope.board)
   }
 })
