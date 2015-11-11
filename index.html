@@ -21,19 +21,21 @@
   <script src="app.js"></script>
 </head>
 <body ng-app="endStreamCounter" ng-controller="boardController">
-<div id="game" ng-click="saveBoard()">
+<div id="game" ng-click="saveBoard($event)">
 
 
 
   <div id="board">
     <ul class="player"
-        ng-repeat="(streamOwner, stats) in board"
+        ng-repeat="(streamOwner, stats) in board.players"
         ng-class="streamOwner">
       <li class="epoch"
           ng-repeat="(epoch, turnpoint) in stats.stream">
         <div class="turnpoint">
           <button class="btn btn-primary btn-block disintegrate btn-{{turnpoint.countingAgent}}"
-                  ng-class="turnpoint.turns === 'Disintegrate' ? 'text' : 'disabled'">
+                  ng-disabled = "turnpoint.turns !== 'Disintegrate'"
+                  ng-class="turnpoint.turns === 'Disintegrate' ? 'text' : 'disabled'"
+                  ng-click="disintegrate(epoch)">
             {{turnpoint.turns}}
           </button>
         </div>
@@ -52,21 +54,21 @@
 
   <div id="controls">
     <div id="actions">
-      <div class="action" ng-repeat="i in actions track by $index">
+      <div class="action" ng-repeat="i in board.actions track by $index">
         <button class="btn btn-primary btn-block"
                 ng-click="actionToggle($index)">
           <i class="fa"
-             ng-class="actions[$index] ? 'fa-circle' : 'fa-circle-thin'"></i></button>
+             ng-class="board.actions[$index] ? 'fa-circle' : 'fa-circle-thin'"></i></button>
       </div>
     </div>
 
-    <p class="defensive-actions"><span class="current-player">{{nextPlayer}}</span> defensive actions:
-      <i class="fa fa-circle" ng-repeat="i in defensiveActions track by $index"></i>
+    <p class="defensive-actions"><span class="current-player">{{board.nextPlayer}}</span> defensive actions:
+      <i class="fa fa-circle" ng-repeat="i in board.defensiveActions track by $index"></i>
     </p>
 
-    <button class="btn btn-primary btn-lg btn-block end-turn btn-{{currentPlayer}}"
+    <button class="btn btn-primary btn-lg btn-block end-turn btn-{{board.currentPlayer}}"
             ng-click="endTurn()">
-      End Turn <span class="current-player">{{currentPlayer}}</span>
+      End Turn <span class="current-player">{{board.currentPlayer}}</span>
     </button>
     <button class="btn btn-primary btn-block new-game"
             ng-click="newGame()">New Game</button>

@@ -80,8 +80,7 @@ body {
       font-size: 14px;
       line-height: 16px;
       font-weight: 300;
-      white-space: normal;
-      }
+      white-space: normal; }
 
 #controls {
   width: 100vw;
@@ -101,14 +100,12 @@ body {
     font-family: 'Ubuntu Condensed', sans-serif;
     font-size: 12px;
     color: #5e6164;
-    margin: 6px;
-    }
+    margin: 6px; }
     #controls .defensive-actions .fa {
       margin: 0 2px; }
   #controls .current-player {
-    font-weight: 500;
-    text-transform: uppercase;
-    }
+    font-weight: 600;
+    text-transform: uppercase; }
   #controls .new-game {
     margin: 12px 0 6px;
     font-weight: 300; }
