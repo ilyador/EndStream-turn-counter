@@ -98,9 +98,10 @@ body {
         padding: 2px 0;
         font-size: 28px; }
   #controls .defensive-actions {
+    margin: 3px 6px;
+    text-align: center;
     font-family: 'Ubuntu Condensed', sans-serif;
-    font-size: 12px;
-    margin: 6px; }
+    font-size: 12px; }
     #controls .defensive-actions .fa {
       margin: 0 2px; }
   #controls .turns {
@@ -113,7 +114,8 @@ body {
       #controls .turns .score h2 {
         margin: 1px 0 0;
         font-size: 37px;
-        line-height: 37px; }
+        line-height: 37px;
+        color: #fff; }
       #controls .turns .score h6 {
         margin: 0;
         font-family: 'Ubuntu Condensed', sans-serif;

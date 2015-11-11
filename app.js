@@ -122,7 +122,7 @@ endStreamCounter.controller('boardController', function($scope, game) {
   }
 
   $scope.disintegrate = function (epoch) {
-    $scope.board[$scope.board.currentPlayer].score += game.streamStructure[epoch].score;
+    $scope.board.players[$scope.board.currentPlayer].score += game.streamStructure[epoch].score;
   }
 
   $scope.actionToggle = function (index) {
