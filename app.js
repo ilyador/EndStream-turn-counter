@@ -98,15 +98,14 @@ endStreamCounter.controller('boardController', function($scope, game) {
 
 
   // Start
-  localStorage.ongoingGame = (localStorage.ongoingGame) ? true : false;
-
   if (localStorage.ongoingGame) {
-    $scope.board = makeBoard()
-  } else {
     $scope.board = JSON.parse(localStorage.board)
+  } else {
+    $scope.board = makeBoard()
   }
 
   $scope.board.nextPlayer = getOtherPlayer($scope.board.currentPlayer)
+
 
 
   // Board actions
@@ -125,15 +124,15 @@ endStreamCounter.controller('boardController', function($scope, game) {
   }
 
   $scope.actionToggle = function (index) {
-    $scope.board.actions[index] = !$scope.actions[index]
+    $scope.board.actions[index] = !$scope.board.actions[index]
   }
 
   $scope.endTurn = function () {
-    _.forOwn($scope.board[$scope.board.players.currentPlayer].stream, reduceTurns)
-    _.forOwn($scope.board[$scope.board.players.nextPlayer].stream, reduceTurns)
+    _.forOwn($scope.board.players[ game.playerNames.p1 ].stream, reduceTurns)
+    _.forOwn($scope.board.players[ game.playerNames.p2 ].stream, reduceTurns)
     $scope.board.nextPlayer = $scope.board.currentPlayer
     $scope.board.currentPlayer = getOtherPlayer($scope.board.currentPlayer)
-    $scope.board.defensiveActions = getDefensiveActions($scope.actions)
+    $scope.board.defensiveActions = getDefensiveActions($scope.board.actions)
     $scope.board.actions = resetActions()
   }
 
@@ -145,8 +144,7 @@ endStreamCounter.controller('boardController', function($scope, game) {
 
   $scope.saveBoard = function ($event) { // Every click saves game state
     if (angular.element($event.target).hasClass("new-game")) return
-    console.log("not returned");
-    localStorage.board = JSON.stringify($scope.board)
     localStorage.ongoingGame = true
+    localStorage.board = JSON.stringify($scope.board)
   }
 })
