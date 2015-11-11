@@ -45,6 +45,8 @@ endStreamCounter.constant('game', {
 
 endStreamCounter.controller('boardController', function($scope, game) {
 
+  // Correspond to items in the scope
+  var localStorageItems = ["board", "actions", "currentPlayer", "defensiveActions"]
 
   // Helper Functions
   function makeBoard() {
@@ -92,6 +94,23 @@ endStreamCounter.controller('boardController', function($scope, game) {
     });
   }
 
+  function setLocalStorage(scope) {
+    for (var i = 0; i < localStorageItems.length; i++) {
+      var item = localStorageItems[i]
+      if (_.isString(scope[item])) {
+        localStorage[item] = scope[item]
+      } else {
+        localStorage[item] = JSON.stringify(scope[item])
+      }
+    }
+  }
+
+  function clearLocalStorage () {
+    for (var i = 0; i < localStorageItems.length; i++) {
+      localStorage.removeItem(localStorageItems[i])
+    }
+  }
+
 
 
   // Setup
@@ -129,16 +148,11 @@ endStreamCounter.controller('boardController', function($scope, game) {
   $scope.newGame = function () {
     $scope.board = makeBoard()
     $scope.actions = resetActions()
-    localStorage.removeItem("board")
-    localStorage.removeItem("actions")
-    localStorage.removeItem("currentPlayer")
-    localStorage.removeItem("defensiveActions")
+    $scope.defensiveActions = []
+    clearLocalStorage()
   }
 
   $scope.saveBoard = function () { // Every click saves game state
-    localStorage.board = JSON.stringify($scope.board)
-    localStorage.actions = JSON.stringify($scope.actions)
-    localStorage.defensiveActions = JSON.stringify($scope.defensiveActions)
-    localStorage.currentPlayer = $scope.currentPlayer
+    setLocalStorage($scope)
   }
 })
