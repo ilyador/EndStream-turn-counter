@@ -65,7 +65,7 @@ endStreamCounter.controller('boardController', function($scope, game) {
       if (turnpoint.turns > 1) {
         turnpoint.turns -= 1
       } else if (turnpoint.turns === 1) {
-        turnpoint.turns = "Disintegrate or spin"
+        turnpoint.turns = "Disintegrate"
       } else {
         turnpoint.turns = game.streamStructure[epoch].turns
       }
@@ -86,12 +86,19 @@ endStreamCounter.controller('boardController', function($scope, game) {
     return Array.apply(null, Array(game.actions)).map(function(){return false})
   }
 
+  function getDefensiveActions (actions) {
+    return _.reject(actions, function(action) {
+      return action;
+    });
+  }
+
 
 
   // Setup
   $scope.currentPlayer = (localStorage.currentPlayer) ? localStorage.currentPlayer : game.playerNames.p1
   $scope.nextPlayer = getOtherPlayer($scope.currentPlayer)
   $scope.actions = (localStorage.actions) ? JSON.parse(localStorage.actions) : resetActions()
+  $scope.defensiveActions = (localStorage.defensiveActions) ? JSON.parse(localStorage.defensiveActions) : []
   $scope.board = (localStorage.board) ? JSON.parse(localStorage.board) : makeBoard()
 
 
@@ -111,23 +118,11 @@ endStreamCounter.controller('boardController', function($scope, game) {
     $scope.actions[index] = !$scope.actions[index]
   }
 
-  $scope.allActionsUsed = function() {
-    return $scope.actions.every(function(item){ return item })
-  }
-
-  $scope.saveBoard = function () {
-    localStorage.board = JSON.stringify($scope.board)
-    console.log($scope.actions);
-    localStorage.actions = JSON.stringify($scope.actions)
-    localStorage.currentPlayer = $scope.currentPlayer
-  }
-
   $scope.endTurn = function () {
-    if (!$scope.allActionsUsed($scope.actions)) { return }
-
     _.forOwn($scope.board[$scope.currentPlayer].stream, reduceTurns)
     _.forOwn($scope.board[$scope.nextPlayer].stream, reduceTurns)
     swapPlayers()
+    $scope.defensiveActions = getDefensiveActions($scope.actions)
     $scope.actions = resetActions()
   }
 
@@ -137,5 +132,13 @@ endStreamCounter.controller('boardController', function($scope, game) {
     localStorage.removeItem("board")
     localStorage.removeItem("actions")
     localStorage.removeItem("currentPlayer")
+    localStorage.removeItem("defensiveActions")
+  }
+
+  $scope.saveBoard = function () { // Every click saves game state
+    localStorage.board = JSON.stringify($scope.board)
+    localStorage.actions = JSON.stringify($scope.actions)
+    localStorage.defensiveActions = JSON.stringify($scope.defensiveActions)
+    localStorage.currentPlayer = $scope.currentPlayer
   }
 })

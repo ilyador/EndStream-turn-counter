@@ -87,7 +87,6 @@ $global-padding: 6px;
 
   #actions {
     display: flex;
-    margin-bottom: $global-padding;
 
     .action {
       flex: 1;
@@ -104,8 +103,19 @@ $global-padding: 6px;
     }
   }
 
+  .defensive-actions {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    font-size: 12px;
+    color: hsl(214, 3%, 38%);
+    margin: $global-padding;
+
+    .fa {
+      margin: 0 2px;
+    }
+  }
+
   .current-player {
-    font-weight: 500;
+    font-weight: 600;
     text-transform: uppercase;
   }
 

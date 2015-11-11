@@ -80,15 +80,15 @@ body {
       font-size: 14px;
       line-height: 16px;
       font-weight: 300;
-      white-space: normal; }
+      white-space: normal;
+      }
 
 #controls {
   width: 100vw;
   margin-top: 12px;
   padding: 0 6px; }
   #controls #actions {
-    display: flex;
-    margin-bottom: 6px; }
+    display: flex; }
     #controls #actions .action {
       flex: 1;
       margin-left: 6px; }
@@ -97,9 +97,18 @@ body {
       #controls #actions .action .btn {
         padding: 2px 0;
         font-size: 28px; }
+  #controls .defensive-actions {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    font-size: 12px;
+    color: #5e6164;
+    margin: 6px;
+    }
+    #controls .defensive-actions .fa {
+      margin: 0 2px; }
   #controls .current-player {
     font-weight: 500;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    }
   #controls .new-game {
     margin: 12px 0 6px;
     font-weight: 300; }

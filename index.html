@@ -33,7 +33,7 @@
           ng-repeat="(epoch, turnpoint) in stats.stream">
         <div class="turnpoint">
           <button class="btn btn-primary btn-block disintegrate btn-{{turnpoint.countingAgent}}"
-                  ng-class="turnpoint.turns === 'Disintegrate or spin' ? 'text' : 'disabled'">
+                  ng-class="turnpoint.turns === 'Disintegrate' ? 'text' : 'disabled'">
             {{turnpoint.turns}}
           </button>
         </div>
@@ -60,9 +60,12 @@
       </div>
     </div>
 
+    <p class="defensive-actions"><span class="current-player">{{nextPlayer}}</span> defensive actions:
+      <i class="fa fa-circle" ng-repeat="i in defensiveActions track by $index"></i>
+    </p>
+
     <button class="btn btn-primary btn-lg btn-block end-turn btn-{{currentPlayer}}"
-            ng-click="endTurn()"
-            ng-disabled="!allActionsUsed()">
+            ng-click="endTurn()">
       End Turn <span class="current-player">{{currentPlayer}}</span>
     </button>
     <button class="btn btn-primary btn-block new-game"
