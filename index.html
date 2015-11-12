@@ -19,6 +19,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
   <script src="app.js"></script>
+  <script src="fastclick.js"></script>
 </head>
 <body ng-app="endStreamCounter" ng-controller="boardController">
 <div id="game" ng-click="saveBoard($event)">
@@ -33,9 +34,9 @@
           ng-repeat="(epoch, turnpoint) in stats.stream">
         <div class="turnpoint">
           <button class="btn btn-primary btn-block disintegrate btn-{{turnpoint.countingAgent}}"
-                  ng-disabled = "turnpoint.turns !== 'Disintegrate'"
-                  ng-class="turnpoint.turns === 'Disintegrate' ? 'text' : 'disabled'"
-                  ng-click="disintegrate(epoch)">
+                  ng-disabled = "!turnpoint.countingAgent"
+                  ng-class="{'text' : turnpoint.turns === 'Disintegrate'}"
+                  ng-click="disintegrate(epoch, turnpoint.countingAgent, streamOwner, turnpoint.turns)">
             {{turnpoint.turns}}
           </button>
         </div>
@@ -67,9 +68,10 @@
     </p>
 
     <div class="turns">
-      <div class="score player1">
-        <h2>{{board.players.player1.score}}</h2>
-        <h6>{{board.players.player1.name}}</h6>
+      <div class="score {{player.name}}"
+           ng-repeat="player in board.players">
+        <h2>{{player.score}}</h2>
+        <h6>{{player.name}}</h6>
       </div>
       <div class="turn">
         <button class="btn btn-primary btn-lg btn-block end-turn btn-{{board.currentPlayer}}"
@@ -77,13 +79,11 @@
           End Turn <span class="current-player">{{board.currentPlayer}}</span>
         </button>
       </div>
-      <div class="score player2">
-        <h2>{{board.players.player2.score}}</h2>
-        <h6>{{board.players.player2.name}}</h6>
-      </div>    </div>
+    </div>
     <button class="btn btn-primary btn-block new-game"
             ng-click="newGame()">New Game</button>
   </div>
+
 
 
 </div>

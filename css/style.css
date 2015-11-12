@@ -72,8 +72,10 @@ body {
     flex: 1; }
   #board .player .place-agent,
   #board .player .disintegrate {
-    height: 56px;
-    font-size: 24px; }
+    height: 46px;
+    padding: 0;
+    font-size: 24px;
+    }
   #board .player .disintegrate {
     font-weight: 500; }
     #board .player .disintegrate.text {
@@ -111,6 +113,8 @@ body {
     #controls .turns .score {
       flex: 0 48px;
       text-align: center; }
+      #controls .turns .score.player2 {
+        order: 1; }
       #controls .turns .score h2 {
         margin: 1px 0 0;
         font-size: 37px;

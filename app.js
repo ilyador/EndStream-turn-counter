@@ -7,13 +7,19 @@ endStreamCounter.constant('game', {
     p2: "player2"
   },
   streamStructure: {
-    "1800": {
+    "2300": {
+      countingAgent: false,
+      turns: 1,
+      cards: 2,
+      score: 1
+    },
+    "2200": {
       countingAgent: false,
       turns: 2,
       cards: 5,
       score: 2
     },
-    "1900": {
+    "2100": {
       countingAgent: false,
       turns: 3,
       cards: 4,
@@ -25,13 +31,13 @@ endStreamCounter.constant('game', {
       cards: 3,
       score: 4
     },
-    "2100": {
+    "1900": {
       countingAgent: false,
       turns: 5,
       cards: 2,
       score: 6
     },
-    "2200": {
+    "1800": {
       countingAgent: false,
       turns: 10,
       cards: 1,
@@ -121,8 +127,11 @@ endStreamCounter.controller('boardController', function($scope, game) {
     }
   }
 
-  $scope.disintegrate = function (epoch) {
-    $scope.board.players[$scope.board.currentPlayer].score += game.streamStructure[epoch].score;
+  $scope.disintegrate = function (epoch, countingAgent, streamOwner, turns) {
+    if (countingAgent !== streamOwner && turns === 'Disintegrate') {
+      $scope.board.players[countingAgent].score += game.streamStructure[epoch].score;
+      $scope.board.players[streamOwner].stream[epoch].turns = game.streamStructure[epoch].turns
+    }
   }
 
   $scope.actionToggle = function (index) {

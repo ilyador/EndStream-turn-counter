@@ -62,7 +62,8 @@ $global-padding: 6px;
 
     .place-agent,
     .disintegrate {
-      height: 56px;
+      height: 46px;
+      padding: 0;
       font-size: 24px;
     }
 
@@ -120,9 +121,14 @@ $global-padding: 6px;
     .turn {
       flex: 1;
     }
+
     .score {
       flex: 0 48px;
       text-align: center;
+
+      &.player2 {
+        order: 1;
+      }
 
       h2 {
         margin: 1px 0 0;
