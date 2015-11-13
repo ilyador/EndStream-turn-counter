@@ -18,8 +18,8 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
-  <script src="app.js"></script>
-  <script src="fastclick.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/fastclick.js"></script>
 </head>
 <body ng-app="endStreamCounter" ng-controller="boardController">
 <div id="game" ng-click="saveBoard($event)">
@@ -31,18 +31,18 @@
         ng-repeat="(streamOwner, stats) in board.players"
         ng-class="streamOwner">
       <li class="epoch"
-          ng-repeat="(epoch, turnpoint) in stats.stream">
+          ng-repeat="turnpoint in stats.stream">
         <div class="turnpoint">
           <button class="btn btn-primary btn-block disintegrate btn-{{turnpoint.countingAgent}}"
                   ng-disabled = "!turnpoint.countingAgent"
                   ng-class="{'text' : turnpoint.turns === 'Disintegrate'}"
-                  ng-click="disintegrate(epoch, turnpoint.countingAgent, streamOwner, turnpoint.turns)">
+                  ng-click="disintegrate($index, turnpoint.countingAgent, streamOwner, turnpoint.turns)">
             {{turnpoint.turns}}
           </button>
         </div>
         <div class="agents">
           <button class="btn btn-primary btn-block place-agent btn-{{turnpoint.countingAgent}}"
-                  ng-click="agentCounting(epoch, streamOwner)">
+                  ng-click="agentCounting($index, streamOwner)">
             <i class="fa"
                ng-class="turnpoint.countingAgent ? 'fa-user-times' : 'fa-user-plus'"></i>
           </button>
@@ -83,6 +83,18 @@
     <button class="btn btn-primary btn-block new-game"
             ng-click="newGame()">New Game</button>
   </div>
+
+
+
+  <!--div class="prompt">
+    <div class="change-player">
+      <button class="btn btn-primary btn-block place-agent btn-{{turnpoint.countingAgent}}"
+              ng-click="agentCounting(epoch, streamOwner)">
+        <i class="fa"
+           ng-class="turnpoint.countingAgent ? 'fa-user-times' : 'fa-user-plus'"></i>
+    </div>
+    <div class="change-turns"></div>
+  </div-->
 
 
 

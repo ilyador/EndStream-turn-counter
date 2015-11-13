@@ -1,57 +1,58 @@
 var endStreamCounter = angular.module('endStreamCounter', [])
 
 
+
 endStreamCounter.constant('game', {
   playerNames: {
     p1: "player1",
     p2: "player2"
   },
-  streamStructure: {
-    "2300": {
+  actions: 6,
+  scoreToWin: 10,
+  streamStructure: [
+    {
+      epoch: "2300",
       countingAgent: false,
       turns: 1,
-      cards: 2,
+      cards: 10,
       score: 1
-    },
-    "2200": {
+    },{
+      epoch: "2200",
       countingAgent: false,
       turns: 2,
       cards: 5,
       score: 2
-    },
-    "2100": {
+    },{
+      epoch: "2100",
       countingAgent: false,
       turns: 3,
       cards: 4,
       score: 3
-    },
-    "2000": {
+    },{
+      epoch: "2000",
       countingAgent: false,
       turns: 4,
       cards: 3,
       score: 4
-    },
-    "1900": {
+    },{
+      epoch: "1900",
       countingAgent: false,
       turns: 5,
       cards: 2,
       score: 6
-    },
-    "1800": {
+    },{
+      epoch: "1800",
       countingAgent: false,
       turns: 10,
       cards: 1,
       score: 12
     }
-  },
-  actions: 6,
-  scoreToWin: 10
+  ]
 })
 
 
+
 endStreamCounter.controller('boardController', function($scope, game) {
-
-
 
   // Helper Functions
   function makeBoard() {
