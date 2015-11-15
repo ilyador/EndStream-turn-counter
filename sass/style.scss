@@ -23,6 +23,8 @@
    |___/
 */
 
+$color-base: hsl(223, 7%, 6%);
+
 html {
   box-sizing: border-box;
 }
@@ -33,7 +35,7 @@ html {
 
 body {
   font-family: 'Ubuntu', sans-serif;
-  background-color: hsl(223, 7%, 6%);
+  background-color: $color-base;
   color: hsl(214, 3%, 38%);
 }
 

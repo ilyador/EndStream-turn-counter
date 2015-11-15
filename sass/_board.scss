@@ -6,7 +6,7 @@ $controls-height: (100vh - $board-height);
 $global-padding: 6px;
 
 #game {
-  background-color: hsl(223, 7%, 6%);
+  background-color: $color-base;
   overflow: hidden;
   width: 100vw;
   transition: all 0.2s linear;
