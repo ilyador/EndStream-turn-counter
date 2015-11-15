@@ -125,6 +125,8 @@ endStreamCounter.controller('boardController', function($scope, game) {
       turnpoint.countingAgent = $scope.board.currentPlayer
     } else {
       $scope.changeAction = "agent"
+      $scope.otherPlayerButton = getOtherPlayer(turnpoint.countingAgent)
+      console.log($scope.otherPlayerButton);
       $scope.changeAgent = function () {
         turnpoint.countingAgent = getOtherPlayer(turnpoint.countingAgent)
         $scope.changeAction = false
