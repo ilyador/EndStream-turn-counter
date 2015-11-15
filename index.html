@@ -21,8 +21,11 @@
   <script src="js/app.js"></script>
   <script src="js/fastclick.js"></script>
 </head>
-<body ng-app="endStreamCounter" ng-controller="boardController">
-<div id="game" ng-click="saveBoard($event)">
+<body ng-app="endStreamCounter"
+      ng-controller="boardController">
+<div id="game"
+     ng-class="{'blur' : changeAction}"
+     ng-click="saveBoard($event)">
 
 
 
@@ -36,7 +39,7 @@
           <button class="btn btn-primary btn-block disintegrate btn-{{turnpoint.countingAgent}}"
                   ng-disabled = "!turnpoint.countingAgent"
                   ng-class="{'text' : turnpoint.turns === 'Disintegrate'}"
-                  ng-click="disintegrate($index, turnpoint.countingAgent, streamOwner, turnpoint.turns)">
+                  ng-click="disintegrate($index, turnpoint.countingAgent, streamOwner)">
             {{turnpoint.turns}}
           </button>
         </div>
@@ -83,21 +86,42 @@
     <button class="btn btn-primary btn-block new-game"
             ng-click="newGame()">New Game</button>
   </div>
-
-
-
-  <!--div class="prompt">
-    <div class="change-player">
-      <button class="btn btn-primary btn-block place-agent btn-{{turnpoint.countingAgent}}"
-              ng-click="agentCounting(epoch, streamOwner)">
-        <i class="fa"
-           ng-class="turnpoint.countingAgent ? 'fa-user-times' : 'fa-user-plus'"></i>
-    </div>
-    <div class="change-turns"></div>
-  </div-->
-
-
-
 </div>
+
+
+
+<div id="prompt"
+     ng-show="changeAction">
+  <div class="change-agent"
+       ng-show="changeAction === 'agent'">
+    <button class="btn btn-primary btn-{{board.nextPlayer}}"
+            ng-click="changeAgent()">
+      <i class="fa fa-user-plus"></i>
+    </button>
+    <button class="btn btn-primary"
+            ng-click="removeAgent()">
+      <i class="fa fa-user-times"></i>
+    </button>
+    <button class="btn btn-primary cancel"
+            ng-click="closeChangeAction()">Cancel</button>
+  </div>
+  <div class="change-turns"
+       ng-show="changeAction === 'turns'">
+    <button class="btn btn-primary"
+            ng-click="turns.reduce()">-</button>
+    <button class="btn btn-primary count" disabled>{{turnCounter}}</button>
+    <button class="btn btn-primary"
+            ng-click="turns.add()">+</button>
+    <div class="cancel-container">
+      <button class="btn btn-primary cancel"
+              ng-click="turns.reset()">Cancel</button>
+      <button class="btn btn-primary cancel"
+              ng-click="turns.close()">Save</button>
+    </div>
+  </div>
+</div>
+
+
+
 </body>
 </html>

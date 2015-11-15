@@ -9,10 +9,7 @@ $global-padding: 6px;
   background-color: hsl(223, 7%, 6%);
   overflow: hidden;
   width: 100vw;
-
-  .btn {
-    outline: none;
-  }
+  transition: all 0.2s linear;
 }
 
 #board {
@@ -155,4 +152,54 @@ $global-padding: 6px;
     margin: $global-padding*2 0 $global-padding;
     font-weight: 300;
   }
+}
+
+#prompt {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: hsla(0, 0%, 0%, .5);
+  font-size: 70px;
+
+  .btn {
+    padding: 0;
+    font-size: 70px;
+    width: 70px;
+  }
+
+  .change-agent .btn {
+    width: 130px;
+  }
+
+  .cancel-container {
+    position: absolute;
+    top: 85%;
+    width: 100%;
+    text-align: center;
+  }
+
+  .cancel {
+    width: 100px;
+    font-size: 24px;
+  }
+
+  .change-agent,
+  .change-turns {
+    position: absolute;
+    width: 100%;
+    top: 20%;
+    text-align: center;
+
+    .count {
+      display: inline-block;
+      width: 108px;
+    }
+  }
+}
+
+.blur {
+  -webkit-filter: blur(4px);
+  -moz-filter: blur(4px);
 }

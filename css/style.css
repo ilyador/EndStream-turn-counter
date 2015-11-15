@@ -26,6 +26,9 @@ body {
   background-color: #0e0f10;
   color: #5e6164; }
 
+button {
+  outline: none !important; }
+
 /*
        _         _
       | |       | |
@@ -39,9 +42,8 @@ body {
 #game {
   background-color: #0e0f10;
   overflow: hidden;
-  width: 100vw; }
-  #game .btn {
-    outline: none; }
+  width: 100vw;
+  transition: all 0.2s linear; }
 
 #board .player {
   width: 50%;
@@ -74,8 +76,7 @@ body {
   #board .player .disintegrate {
     height: 46px;
     padding: 0;
-    font-size: 24px;
-    }
+    font-size: 24px; }
   #board .player .disintegrate {
     font-weight: 500; }
     #board .player .disintegrate.text {
@@ -131,5 +132,42 @@ body {
   #controls .new-game {
     margin: 12px 0 6px;
     font-weight: 300; }
+
+#prompt {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  font-size: 70px; }
+  #prompt .btn {
+    padding: 0;
+    font-size: 70px;
+    width: 70px; }
+  #prompt .change-agent .btn {
+    width: 130px; }
+  #prompt .cancel-container {
+    position: absolute;
+    top: 85%;
+    width: 100%;
+    text-align: center; }
+  #prompt .cancel {
+    width: 100px;
+    font-size: 24px; }
+  #prompt .change-agent,
+  #prompt .change-turns {
+    position: absolute;
+    width: 100%;
+    top: 20%;
+    text-align: center; }
+    #prompt .change-agent .count,
+    #prompt .change-turns .count {
+      display: inline-block;
+      width: 108px; }
+
+.blur {
+  -webkit-filter: blur(4px);
+  -moz-filter: blur(4px); }
 
 /*# sourceMappingURL=style.css.map */

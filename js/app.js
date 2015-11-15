@@ -79,7 +79,7 @@ endStreamCounter.controller('boardController', function($scope, game) {
   }
 
   function reduceTurns(turnpoint, epoch) {
-    if(turnpoint.countingAgent === $scope.board.nextPlayer) {
+    if (turnpoint.countingAgent === $scope.board.nextPlayer) {
       if (turnpoint.turns > 1) {
         turnpoint.turns -= 1
       } else if (turnpoint.turns === 1) {
@@ -100,8 +100,8 @@ endStreamCounter.controller('boardController', function($scope, game) {
 
   function getDefensiveActions (actions) {
     return _.reject(actions, function(action) {
-      return action;
-    });
+      return action
+    })
   }
 
 
@@ -114,6 +114,7 @@ endStreamCounter.controller('boardController', function($scope, game) {
   }
 
   $scope.board.nextPlayer = getOtherPlayer($scope.board.currentPlayer)
+  $scope.changeAction = false
 
 
 
@@ -123,15 +124,54 @@ endStreamCounter.controller('boardController', function($scope, game) {
     if (!turnpoint.countingAgent) {
       turnpoint.countingAgent = $scope.board.currentPlayer
     } else {
-      turnpoint.turns = game.streamStructure[epoch].turns // Resetting counter when agent is removed
-      turnpoint.countingAgent = false
+      $scope.changeAction = "agent"
+      $scope.changeAgent = function () {
+        turnpoint.countingAgent = getOtherPlayer(turnpoint.countingAgent)
+        $scope.changeAction = false
+      }
+      $scope.removeAgent = function () {
+        turnpoint.countingAgent = false
+        turnpoint.turns = game.streamStructure[epoch].turns // Resetting counter when agent is removed
+        $scope.changeAction = false
+      }
     }
   }
 
-  $scope.disintegrate = function (epoch, countingAgent, streamOwner, turns) {
-    if (countingAgent !== streamOwner && turns === 'Disintegrate') {
-      $scope.board.players[countingAgent].score += game.streamStructure[epoch].score;
-      $scope.board.players[streamOwner].stream[epoch].turns = game.streamStructure[epoch].turns
+  $scope.closeChangeAction = function () {
+    $scope.changeAction = false
+  }
+
+  $scope.disintegrate = function (epoch, countingAgent, streamOwner) {
+    var turnpoint = $scope.board.players[streamOwner].stream[epoch]
+
+    if (countingAgent !== streamOwner && turnpoint.turns === 'Disintegrate') {
+      $scope.board.players[countingAgent].score += game.streamStructure[epoch].score
+      turnpoint.turns = game.streamStructure[epoch].turns
+    } else {
+      if (turnpoint.turns >= 1) {
+        $scope.changeAction = "turns"
+        $scope.turnCounter = turnpoint.turns
+        $scope.turns = {
+          add: function () {
+            if (turnpoint.turns >= 10) return
+            else turnpoint.turns += 1
+            $scope.turnCounter = turnpoint.turns
+          },
+          reduce: function () {
+            if (turnpoint.turns <= 0) return
+            else turnpoint.turns -= 1
+            $scope.turnCounter = turnpoint.turns
+          },
+          reset: function () {
+            turnpoint.turns = game.streamStructure[epoch].score
+            $scope.changeAction = false
+          },
+          close: function () {
+            if (turnpoint.turns === 0) turnpoint.turns = 'Disintegrate'
+            $scope.changeAction = false
+          }
+        }
+      }
     }
   }
 
