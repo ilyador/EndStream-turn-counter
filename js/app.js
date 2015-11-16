@@ -52,7 +52,7 @@ endStreamCounter.constant('game', {
 
 
 
-endStreamCounter.controller('boardController', function($scope, game) {
+endStreamCounter.controller('boardController', ['$scope', 'game', function($scope, game) {
 
   // Helper Functions
   function makeBoard() {
@@ -199,4 +199,4 @@ endStreamCounter.controller('boardController', function($scope, game) {
     if (angular.element($event.target).hasClass("new-game")) return
     localStorage.board = JSON.stringify($scope.board)
   }
-})
+}])
