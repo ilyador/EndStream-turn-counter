@@ -193,7 +193,12 @@ endStreamCounter.controller('boardController', ['$scope', 'game', function($scop
 
 
   $scope.actionToggle = function (index) {
-    $scope.board.actions[index] = !$scope.board.actions[index]
+    if (!$scope.board.actions[index]) index += 1
+
+    $scope.board.actions = resetActions()
+    for (var i = 0; i < index; i++) {
+      $scope.board.actions[i] = true
+    }
   }
 
 

@@ -65,8 +65,10 @@
       </div>
     </div>
 
-    <p class="defensive-actions"><span class="current-player">{{board.nextPlayer}}</span> defensive actions:
-      <i class="fa fa-circle" ng-repeat="i in board.defensiveActions track by $index"></i>
+    <p class="defensive-actions">
+      <span class="current-player">{{board.nextPlayer}}</span> defensive actions:
+      <i class="fa fa-circle"
+         ng-repeat="i in board.defensiveActions track by $index"></i>
     </p>
 
     <div class="turns">
