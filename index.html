@@ -37,7 +37,7 @@
         <div class="turnpoint">
           <button class="btn btn-primary btn-block disintegrate btn-{{turnpoint.countingAgent}}"
                   ng-disabled = "!turnpoint.countingAgent"
-                  ng-class="{'text' : turnpoint.turns === 'Disintegrate'}"
+                  ng-class="{ 'text' : isString(turnpoint.turns) }"
                   ng-click="disintegrate($index, turnpoint.countingAgent, streamOwner)">
             {{turnpoint.turns}}
           </button>

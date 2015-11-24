@@ -78,14 +78,16 @@ endStreamCounter.controller('boardController', ['$scope', 'game', function($scop
     return board
   }
 
-  function reduceTurns(turnpoint, epoch) {
-    if (turnpoint.countingAgent === $scope.board.nextPlayer) {
-      if (turnpoint.turns > 1) {
-        turnpoint.turns -= 1
-      } else if (turnpoint.turns === 1) {
-        turnpoint.turns = "Disintegrate"
-      } else {
-        turnpoint.turns = game.streamStructure[epoch].turns
+  function createReduceTurns (streamOwner, nextPlayer) {
+    return function (turnpoint, epoch) {
+      if (turnpoint.countingAgent === nextPlayer) {
+        if (turnpoint.turns > 1) {
+          turnpoint.turns -= 1
+        } else if (turnpoint.turns === 1) {
+          turnpoint.turns = (turnpoint.countingAgent === streamOwner) ? "Spin" : "Disintegrate or spin"
+        } else {
+          turnpoint.turns = game.streamStructure[epoch].turns
+        }
       }
     }
   }
@@ -126,7 +128,6 @@ endStreamCounter.controller('boardController', ['$scope', 'game', function($scop
     } else {
       $scope.changeAction = "agent"
       $scope.otherPlayerButton = getOtherPlayer(turnpoint.countingAgent)
-      console.log($scope.otherPlayerButton);
       $scope.changeAgent = function () {
         turnpoint.countingAgent = getOtherPlayer(turnpoint.countingAgent)
         $scope.changeAction = false
@@ -139,9 +140,16 @@ endStreamCounter.controller('boardController', ['$scope', 'game', function($scop
     }
   }
 
+
   $scope.closeChangeAction = function () {
     $scope.changeAction = false
   }
+
+
+  $scope.isString = function (text) {
+    return _.isString(text)
+  }
+
 
   $scope.disintegrate = function (epoch, countingAgent, streamOwner) {
     var turnpoint = $scope.board.players[streamOwner].stream[epoch]
@@ -177,23 +185,31 @@ endStreamCounter.controller('boardController', ['$scope', 'game', function($scop
     }
   }
 
+
   $scope.actionToggle = function (index) {
     $scope.board.actions[index] = !$scope.board.actions[index]
   }
 
+
   $scope.endTurn = function () {
-    _.forOwn($scope.board.players[ game.playerNames.p1 ].stream, reduceTurns)
-    _.forOwn($scope.board.players[ game.playerNames.p2 ].stream, reduceTurns)
+    var reduceTurnsP1 = createReduceTurns(game.playerNames.p1, $scope.board.nextPlayer)
+    var reduceTurnsP2 = createReduceTurns(game.playerNames.p2, $scope.board.nextPlayer)
+
+    _.forOwn($scope.board.players[ game.playerNames.p1 ].stream, reduceTurnsP1)
+    _.forOwn($scope.board.players[ game.playerNames.p2 ].stream, reduceTurnsP2)
+
     $scope.board.nextPlayer = $scope.board.currentPlayer
     $scope.board.currentPlayer = getOtherPlayer($scope.board.currentPlayer)
     $scope.board.defensiveActions = getDefensiveActions($scope.board.actions)
     $scope.board.actions = resetActions()
   }
 
+
   $scope.newGame = function () {
     localStorage.removeItem("board")
     $scope.board = makeBoard()
   }
+
 
   $scope.saveBoard = function ($event) { // Every click saves game state
     if (angular.element($event.target).hasClass("new-game")) return
