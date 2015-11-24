@@ -4,44 +4,44 @@ var endStreamCounter = angular.module('endStreamCounter', [])
 
 endStreamCounter.constant('game', {
   playerNames: {
-    p1: "player1",
-    p2: "player2"
+    p1: 'player1',
+    p2: 'player2'
   },
   actions: 6,
   scoreToWin: 10,
   streamStructure: [
     {
-      epoch: "2300",
+      epoch: '2300',
       countingAgent: false,
       turns: 1,
       cards: 10,
       score: 1
     },{
-      epoch: "2200",
+      epoch: '2200',
       countingAgent: false,
       turns: 2,
       cards: 5,
       score: 2
     },{
-      epoch: "2100",
+      epoch: '2100',
       countingAgent: false,
       turns: 3,
       cards: 4,
       score: 3
     },{
-      epoch: "2000",
+      epoch: '2000',
       countingAgent: false,
       turns: 4,
       cards: 3,
       score: 4
     },{
-      epoch: "1900",
+      epoch: '1900',
       countingAgent: false,
       turns: 5,
       cards: 2,
       score: 6
     },{
-      epoch: "1800",
+      epoch: '1800',
       countingAgent: false,
       turns: 10,
       cards: 1,
@@ -84,7 +84,7 @@ endStreamCounter.controller('boardController', ['$scope', 'game', function($scop
         if (turnpoint.turns > 1) {
           turnpoint.turns -= 1
         } else if (turnpoint.turns === 1) {
-          turnpoint.turns = (turnpoint.countingAgent === streamOwner) ? "Spin" : "Disintegrate or spin"
+          turnpoint.turns = (turnpoint.countingAgent === streamOwner) ? 'Spin' : 'Disintegrate or spin'
         } else {
           turnpoint.turns = game.streamStructure[epoch].turns
         }
@@ -126,7 +126,7 @@ endStreamCounter.controller('boardController', ['$scope', 'game', function($scop
     if (!turnpoint.countingAgent) {
       turnpoint.countingAgent = $scope.board.currentPlayer
     } else {
-      $scope.changeAction = "agent"
+      $scope.changeAction = 'agent'
       $scope.otherPlayerButton = getOtherPlayer(turnpoint.countingAgent)
       $scope.changeAgent = function () {
         turnpoint.countingAgent = getOtherPlayer(turnpoint.countingAgent)
@@ -159,7 +159,7 @@ endStreamCounter.controller('boardController', ['$scope', 'game', function($scop
       turnpoint.turns = game.streamStructure[epoch].turns
     } else {
       if (turnpoint.turns >= 1) {
-        $scope.changeAction = "turns"
+        $scope.changeAction = 'turns'
         $scope.turnCounter = turnpoint.turns
         $scope.turns = {
           add: function () {
@@ -179,9 +179,9 @@ endStreamCounter.controller('boardController', ['$scope', 'game', function($scop
           close: function () {
             if (turnpoint.turns === 0) {
               if (countingAgent === streamOwner) {
-                turnpoint.turns = "Spin"
+                turnpoint.turns = 'Spin'
               } else {
-                turnpoint.turns = "Disintegrate or spin"
+                turnpoint.turns = 'Disintegrate or spin'
               }
             }
             $scope.changeAction = false
@@ -212,13 +212,13 @@ endStreamCounter.controller('boardController', ['$scope', 'game', function($scop
 
 
   $scope.newGame = function () {
-    localStorage.removeItem("board")
+    localStorage.removeItem('board')
     $scope.board = makeBoard()
   }
 
 
   $scope.saveBoard = function ($event) { // Every click saves game state
-    if (angular.element($event.target).hasClass("new-game")) return
+    if (angular.element($event.target).hasClass('new-game')) return
     localStorage.board = JSON.stringify($scope.board)
   }
 }])
