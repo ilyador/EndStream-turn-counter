@@ -154,7 +154,7 @@ endStreamCounter.controller('boardController', ['$scope', 'game', function($scop
   $scope.disintegrate = function (epoch, countingAgent, streamOwner) {
     var turnpoint = $scope.board.players[streamOwner].stream[epoch]
 
-    if (countingAgent !== streamOwner && turnpoint.turns === 'Disintegrate') {
+    if (countingAgent !== streamOwner && _.isString(turnpoint.turns)) {
       $scope.board.players[countingAgent].score += game.streamStructure[epoch].score
       turnpoint.turns = game.streamStructure[epoch].turns
     } else {
@@ -177,7 +177,13 @@ endStreamCounter.controller('boardController', ['$scope', 'game', function($scop
             $scope.changeAction = false
           },
           close: function () {
-            if (turnpoint.turns === 0) turnpoint.turns = 'Disintegrate'
+            if (turnpoint.turns === 0) {
+              if (countingAgent === streamOwner) {
+                turnpoint.turns = "Spin"
+              } else {
+                turnpoint.turns = "Disintegrate or spin"
+              }
+            }
             $scope.changeAction = false
           }
         }
